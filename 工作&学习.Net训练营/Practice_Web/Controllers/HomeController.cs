@@ -26,6 +26,9 @@ namespace Practice_Web.Controllers
 
             var dataList = JsonConvert.DeserializeObject<ClassToolModel>(classToolJson);
 
+            var date = Convert.ToDateTime("00:11:37.770");
+
+
             return View();
         }
 
