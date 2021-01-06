@@ -4,5 +4,22 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p><button id="LookData">查看所数据类型数组</button></p>
 </div>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#LookData").click(function () {
+                $.ajax({
+                async: true,
+                url:@Url.Action("Index", "Array"),
+                type: 'post',
+                success: function (res) {
+                    console.log(res);
+                }
+           });
+        });
+    })
+</script>
