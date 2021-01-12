@@ -6,20 +6,25 @@ using System.Threading.Tasks;
 
 namespace PracticeSiteWeb.Controllers
 {
+    /// <summary>
+    /// C# 数组（Array）
+    /// </summary>
     public class ArrayController : Controller
     {
         [HttpPost]
         public IActionResult Index()
         {
-            //cc
+            //多类型数组定义
             var multiTypeArray = new object[] {"小明",'H',2021,"hello world",'!' };
+
+            var getData = new List<object>();
 
             foreach (var item in multiTypeArray)
             {
-                var currentValue = item;
+                getData.Add(item);
             }
 
-            return View();
+            return Json(new {data= getData,code=0 });
         }
     }
 }

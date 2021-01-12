@@ -4,22 +4,20 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p><button id="LookData">查看所数据类型数组</button></p>
+    <p><button id="LookData" onclick="ClickBut()">查看所数据类型数组</button></p>
 </div>
 
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
 <script type="text/javascript">
-    $(function () {
-        $("#LookData").click(function () {
-                $.ajax({
+
+    function ClickBut() {
+        $.ajax({
                 async: true,
-                url:@Url.Action("Index", "Array"),
+                url:"@Url.Action("Index", "Array")",
                 type: 'post',
                 success: function (res) {
                     console.log(res);
                 }
-           });
-        });
-    })
+              });
+    }
 </script>
