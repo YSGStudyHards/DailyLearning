@@ -13,7 +13,7 @@
     function ClickBut() {
         $.ajax({
                 async: true,
-                url:"@Url.Action("Index", "Array")",
+                url:"@Url.Action("Index", "Queue")",
                 type: 'post',
                 success: function (res) {
                     console.log(res);
