@@ -14,3 +14,12 @@ D:\开发学习-Master\A-每日学习训练营\DailyLearning\工作&学习.Net�
 D:\开发学习-Master\A-每日学习训练营\DailyLearning\工作&学习.Net训练营\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
 D:\开发学习-Master\A-每日学习训练营\DailyLearning\工作&学习.Net训练营\Domain\obj\Debug\netcoreapp3.1\Domain.dll
 D:\开发学习-Master\A-每日学习训练营\DailyLearning\工作&学习.Net训练营\Domain\obj\Debug\netcoreapp3.1\Domain.pdb
+E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Domain\bin\Debug\netcoreapp3.1\Domain.deps.json
+E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Domain\bin\Debug\netcoreapp3.1\Domain.dll
+E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Domain\bin\Debug\netcoreapp3.1\Domain.pdb
+E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Domain\obj\Debug\netcoreapp3.1\Domain.csprojAssemblyReference.cache
+E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
+E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
+E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache
+E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Domain\obj\Debug\netcoreapp3.1\Domain.dll
+E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Domain\obj\Debug\netcoreapp3.1\Domain.pdb
