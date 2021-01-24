@@ -26,6 +26,7 @@ namespace Practice_Web.Controllers
 
             var dataList = JsonConvert.DeserializeObject<ClassToolModel>(classToolJson);
 
+<<<<<<< HEAD
             string ImgCode = "ysg20180807/1c5bd382-ae4e-4160-b05b-a58f98509bbe.png";
 
             //是否存在2018
@@ -36,6 +37,9 @@ namespace Practice_Web.Controllers
                 ImgCode = "/uploads/FDImage/Cover/" +
                           ImgCode.ToString().Substring(ImgCode.ToString().IndexOf("2018"));
             }
+=======
+            var date = Convert.ToDateTime("00:11:37.770");
+>>>>>>> 99671712a6e070163fa2ac01ab793bf2378c9e23
 
 
             return View();

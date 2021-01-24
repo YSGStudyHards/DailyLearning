@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+	<audio controls autoplay id='videoDiv'>
+		<source src="http://mp3.9ku.com/hot/2005/05-19/65937.mp3" type="audio/ogg">
+	</audio>
+
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			//js获取某个mp3音频文件的播放时长
+			getAudioDuration('http://mp3.9ku.com/hot/2005/05-19/65937.mp3');
+
+			duration();
+			console.log("转化为多少秒=》》", timeEvent("00:14:36"));
+		})
+
+		// 音频加载完成后的一系列操作
+		function duration() {
+			var myVid = document.getElementById("videoDiv");
+			console.log("duration  ", myVid);
+			if (myVid != null) {
+				var duration;
+				myVid.load(); //方法重新加载音频/视频元素
+				// https://www.w3school.com.cn/tags/av_prop_currenttime.asp
+				// currentTime 属性设置或返回音频/视频播放的当前位置（以秒计）。
+				// 当设置该属性时，播放会跳跃到指定的位置。
+				myVid.currentTime = 20; //默认指定音频默认从20s的时候开始播放（默认时间为s）
+				myVid.oncanplay = function () {
+					//duration 属性返回当前音频的长度，以秒计。
+					console.log("音频时间", myVid.duration);
+					console.log("时分秒格式转化：", timeToMinute(myVid.duration))
+				}
+			}
+		}
+
+		function getAudioDuration(src) {
+			let audio = document.createElement('audio') //生成一个audio元素 
+			audio.src = src //音乐的路径 
+			audio.addEventListener("canplay", function () {
+				console.log("音频长度=>>>：", parseInt(audio.duration) + '秒', '音频时分秒格式：', timeToMinute(parseInt(audio
+					.duration)));
+			});
+		}
+
+		// 秒转换时分钟00:00:00格式
+		function timeToMinute(times) {
+			var t;
+			if (times > -1) {
+				var hour = Math.floor(times / 3600);
+				var min = Math.floor(times / 60) % 60;
+				var sec = times % 60;
+				if (hour < 10) {
+					t = '0' + hour + ":";
+				} else {
+					t = hour + ":";
+				}
+
+				if (min < 10) {
+					t += "0";
+				}
+				t += min + ":";
+				if (sec < 10) {
+					t += "0";
+				}
+				t += sec.toFixed(2);
+			}
+			t = t.substring(0, t.length - 3);
+			return t;
+		}
+
+		// 00:00:00时分秒格式转化为秒
+		function timeEvent(e) {
+			let time = e;
+			var len = time.split(':');
+			if (len.length == 3) {
+				var hour = time.split(':')[0];
+				var min = time.split(':')[1];
+				var sec = time.split(':')[2];
+				return Number(hour * 3600) + Number(min * 60) + Number(sec);
+			}
+			if (len.length == 2) {
+				var min = time.split(':')[0];
+				var sec = time.split(':')[1];
+				return Number(min * 60) + Number(sec);
+			}
+			if (len.length == 1) {
+				var sec = time.split(':')[0];
+				return Number(sec);
+			}
+		}
+	</script>
+</body>
+
+</html>

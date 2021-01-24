@@ -4,5 +4,20 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p><button id="LookData" onclick="ClickBut()">查看所数据类型数组</button></p>
 </div>
+
+
+<script type="text/javascript">
+
+    function ClickBut() {
+        $.ajax({
+                async: true,
+                url:"@Url.Action("Index", "Queue")",
+                type: 'post',
+                success: function (res) {
+                    console.log(res);
+                }
+              });
+    }
+</script>
