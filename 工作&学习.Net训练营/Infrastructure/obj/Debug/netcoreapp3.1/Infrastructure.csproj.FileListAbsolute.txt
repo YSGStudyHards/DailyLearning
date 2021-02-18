@@ -17,7 +17,6 @@ D:\开发学习-Master\A-每日学习训练营\DailyLearning\工作&学习.Net�
 E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.deps.json
 E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.dll
 E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.pdb
-E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csprojAssemblyReference.cache
 E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfoInputs.cache
 E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfo.cs
 E:\A-我的Github开源项目\DailyLearning\工作&学习.Net训练营\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CoreCompileInputs.cache
