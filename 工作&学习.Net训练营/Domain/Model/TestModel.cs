@@ -10,10 +10,10 @@ namespace Domain.Model
     /// </summary>
     public class TestModel
     {
-        private int Id { get; set; }
+        public int Id { get; set; }
 
-        private string Name { get; set; }
+        public string Name { get; set; }
 
-        private int Age { get; set; }
+        public int Age { get; set; }
     }
 }
