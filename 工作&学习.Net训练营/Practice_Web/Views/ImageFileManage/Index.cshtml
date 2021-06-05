@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "图片上传到服务端";
+}
+
+<h1>图片上传到服务端</h1>
+
+<div class="text-center">
+    <p><input type="file" id="imageFile" onchange="uploadImage(this)" /></p>
+</div>
+
+<script type="text/javascript">
+    //图片上传
+    function uploadImage(fileObject) {
+        var formData = new FormData();
+        var files = $(fileObject).prop('files'); //获取到文件列表
+        formData.append("file", files[0]);//图片文件流
+        $.ajax({
+                async: true,
+                url:"@Url.Action("UploadImage", "ImageFileManage")",
+                type: 'post',
+                data: formData,
+                // 告诉jQuery不要去处理发送的数据
+                processData: false,
+                success: function (res) {
+                    console.log(res);
+                }
+              });
+    }
+</script>
+

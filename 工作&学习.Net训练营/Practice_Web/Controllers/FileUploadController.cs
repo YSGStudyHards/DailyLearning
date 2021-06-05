@@ -77,26 +77,6 @@ namespace PracticeSiteWeb.Controllers
             }
         }
 
-        ////文件流转化为字节
-        ///// <summary>
-        ///// 文件流类型转化字节类型
-        ///// </summary>
-        ///// <param name="fileData">文件流数据</param>
-        ///// <returns></returns>
-        //private byte[] ReadFileBytes(HttpPostedFileBase fileData)
-        //{
-        //    byte[] data;
-        //    using (Stream inputStream = fileData.InputStream)
-        //    {
-        //        MemoryStream memoryStream = inputStream as MemoryStream;
-        //        if (memoryStream == null)
-        //        {
-        //            memoryStream = new MemoryStream();
-        //            inputStream.CopyTo(memoryStream);
-        //        }
-        //        data = memoryStream.ToArray();
-        //    }
-        //    return data;
-        //}
+
     }
 }

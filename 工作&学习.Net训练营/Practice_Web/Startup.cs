@@ -53,7 +53,7 @@ namespace Practice_Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=ImageFileManage}/{action=Index}/{id?}");
             });
         }
     }
