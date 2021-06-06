@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,14 @@ namespace PracticeSiteWeb.Controllers
         public FileUploadController(IHostingEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
+        }
+
+        // 由参数中传入
+        public JsonResult UploadVersion()
+        {
+            var formFile = Request.Form.Files[0];//获取请求发送过来的文件
+            // 这边直接使用formData
+            return Json(new {code=0,msg="ok" });
         }
 
         /// <summary>

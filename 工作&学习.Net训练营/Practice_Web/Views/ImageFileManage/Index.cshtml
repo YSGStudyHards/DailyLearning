@@ -13,14 +13,18 @@
     //图片上传
     function uploadImage(fileObject) {
         var formData = new FormData();
-        var files = $(fileObject).prop('files'); //获取到文件列表
-        formData.append("file", files[0]);//图片文件流
+        var files = $(fileObject).prop('files'); //获取到文件列表【$("#imageFile").get(0)通过id获取文件列表】
+        formData.append("files", files[0]);//图片文件流
+        console.log('formData=>>>', formData, files);
         $.ajax({
                 async: true,
                 url:"@Url.Action("UploadImage", "ImageFileManage")",
                 type: 'post',
                 data: formData,
-                // 告诉jQuery不要去处理发送的数据
+                //https://segmentfault.com/a/1190000007207128?utm_source=tag-newest
+                //在 ajax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                contentType: false,
+                //告诉jQuery不要去处理发送的数据
                 processData: false,
                 success: function (res) {
                     console.log(res);

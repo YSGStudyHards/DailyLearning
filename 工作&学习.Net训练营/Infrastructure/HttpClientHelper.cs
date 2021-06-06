@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,8 +25,9 @@ namespace Infrastructure
         /// </summary>
         /// <param name="requestUrl">url</param>
         /// <param name="bmpBytes">图片二进制字节流</param>
+        /// <param name="fileName">文件名称</param>
         /// <returns></returns>
-        public async Task<string> HttpClientPost(string requestUrl, Byte[] bmpBytes)
+        public async Task<string> HttpClientPosts(string requestUrl, Byte[] bmpBytes,string fileName)
         {
             string responseBody = string.Empty;
 
@@ -38,11 +40,18 @@ namespace Infrastructure
                     //httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization","");//授权token
                     #endregion
 
+
+                    string boundary = DateTime.Now.Ticks.ToString("X"); // 随机分隔线 
+
+
+
                     var fileContent = new ByteArrayContent(bmpBytes);
 
                     //请求内容类型
-                    fileContent.Headers.Add("Content-Type", "multipart/form-data");
+                    fileContent.Headers.Add("Content-Type","multipart/form-data");
+                    //fileContent.Headers.Add("Content-Type", "multipart/form-data;boundary=----"+ boundary + "");
 
+                    //fileContent.Headers.Add("Content-Disposition", "form-data; name=\"file\"; filename=\"" + fileName + "\"");
                     HttpResponseMessage response = await httpClient.PostAsync(requestUrl, fileContent);
 
                     response.EnsureSuccessStatusCode();
@@ -58,59 +67,74 @@ namespace Infrastructure
             }
         }
 
+        /// <summary>
+        /// 向目标地址提交图片文件参数数据
+        /// </summary>
+        /// <param name="requestUrl">请求地址</param>
+        /// <param name="bmpBytes">图片字节流</param>
+        /// <param name="imgType">上传图片类型</param>
+        /// <param name="fileName">图片名称</param>
+        /// <returns></returns>
+        public string HttpClientPost(string requestUrl, byte[] bmpBytes,string imgType, string fileName)
+        {
+            using (var client = new HttpClient())
+            {
+                List<ByteArrayContent> byteArrayContents = new List<ByteArrayContent>();
 
+                var imgTypeContent = new ByteArrayContent(Encoding.UTF8.GetBytes(imgType));
+                imgTypeContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "imgType"
+                };
+                byteArrayContents.Add(imgTypeContent);
 
+                var fileContent = new ByteArrayContent(bmpBytes);//填充图片文件二进制字节
+                fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "file",
+                    FileName = fileName
+                };
+                byteArrayContents.Add(fileContent);
 
-        ///// <summary>
-        ///// 根据返回的tmpUploadUrl、uploadMethod和uploadHeaders上传文件(分片文件上传)
-        ///// </summary>
-        ///// <param name="bmpBytes">图片二进制字节流</param>
-        ///// <param name="uploadHeaderObjects">上传文件时需要携带的的HTTP Header列表</param>
-        ///// <param name="uploadUrlResponseObject">文件地址申请响应参数</param>
-        ///// <returns></returns>
-        //public string HttpClientUploadSlicingMediaFiles(Byte[] bmpBytes, dynamic uploadHeaderObjects, Filepart uploadUrlResponseObject)
-        //{
-        //    using (var client = new HttpClient())
-        //    {
-        //        #region 自定义请求头
+                var content = new MultipartFormDataContent();
+                //将ByteArrayContent集合加入到MultipartFormDataContent中
+                foreach (var byteArrayContent in byteArrayContents)
+                {
+                    content.Add(byteArrayContent);
+                }
 
-        //        client.DefaultRequestHeaders.Add("x-amz-content-sha256", Convert.ToString(uploadHeaderObjects["x-amz-content-sha256"]));
-        //        client.DefaultRequestHeaders.Add("x-amz-date", Convert.ToString(uploadHeaderObjects["x-amz-date"]));
-        //        client.DefaultRequestHeaders.Add("Host", Convert.ToString(uploadHeaderObjects["Host"]));
-        //        #endregion
+                try
+                {
+                    var result = client.PostAsync(requestUrl,content).Result;//post请求
+                    return result.Content.ReadAsStringAsync().Result;
+                }
+                catch (Exception ex)
+                {
+                    return ex.Message;
+                }
+                //            using (var content = new MultipartFormDataContent())
+                //            {
+                //                Action<List<ByteArrayContent>> act = (dataContents) =>
+                //                {//声明一个委托，该委托的作用就是将ByteArrayContent集合加入到MultipartFormDataContent中
+                //foreach (var byteArrayContent in dataContents)
+                //                    {
+                //                        content.Add(byteArrayContent);
+                //                    }
+                //                };
 
-        //        var fileContent = new ByteArrayContent(bmpBytes);
+                //                act(list);//执行act
+                //                try
+                //                {
+                //                    var result = client.PostAsync(requestUrl, content).Result;//post请求
+                //                    return result.Content.ReadAsStringAsync().Result;
+                //                }
+                //                catch (Exception ex)
+                //                {
+                //                    return ex.Message;
+                //                }
 
-        //        //请求内容类型
-        //        fileContent.Headers.Add("Content-Type", Convert.ToString(uploadHeaderObjects["Content-Type"]));
-
-        //        var result = new HttpResponseMessage();
-
-        //        if (uploadUrlResponseObject.method == "PUT")
-        //        {
-        //            result = client.PutAsync(uploadUrlResponseObject.materialUrl, fileContent).Result;//put请求
-        //        }
-        //        else
-        //        {
-        //            result = client.PostAsync(uploadUrlResponseObject.materialUrl, fileContent).Result;//post请求
-        //        }
-
-        //        var reponseMessage = "";
-
-        //        if (result.Content.ReadAsStringAsync().Result == "")//request success
-        //        {
-        //            //HttpResponseHeaders headerResult= result.Headers; //成功上传每个分片后注意保存返回的Headers，在分片合并时需要用到。
-        //            //var googleGeneration=result.Headers.GetValues("x-google-generation");
-        //            reponseMessage = result.Headers.ETag.ToString(); //result.Headers.GetValues("etag");必填实际上传分片文件时，教育中心服务端返回的名称为Etag的HTTP Header的值。
-        //        }
-        //        else
-        //        {
-        //            reponseMessage = result.Content.ReadAsStringAsync().Result;
-        //        }
-
-        //        return reponseMessage;
-
-        //    }
-        //}
+                //            }
+            }
+        }
     }
 }
