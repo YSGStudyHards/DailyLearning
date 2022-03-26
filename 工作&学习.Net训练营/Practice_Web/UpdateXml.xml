@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<books>
+  <book>
+    <author author="娱乐">追逐时光者</author>
+    <title>XML学习教程</title>
+    <publisher>时光出版社</publisher>
+  </book>
+</books>
