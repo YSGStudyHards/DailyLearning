@@ -26,11 +26,16 @@ namespace Practice_Web.Controllers
 
         public IActionResult Index()
         {
+
+            var getData = StaticClass.GetUserName();
+
             return View();
         }
 
         public void DataJsonDeserializeObject()
         {
+
+
             #region 
             string classToolJson = "{\"Description\": \"枚举测试\",\"ClassToolDataList\": [{\"ClassTool\": 1}, {\"ClassTool\": 2}, {\"ClassTool\": 3}, {\"ClassTool\": 4},{\"ClassTool\": 5},{\"ClassTool\": 6}, {\"ClassTool\": 7},{\"ClassTool\": 8}, {\"ClassTool\": 9}, {\"ClassTool\":\"\"}]}";
 
