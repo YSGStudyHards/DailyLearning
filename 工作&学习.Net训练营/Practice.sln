@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.87
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{2299BA5C-1BD7-4A4D-8D42-93CC1EACBAF0}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "基础设施", "基础设施", "{0BA9A611-103D-47EC-8F11-DB9D0EB1D6BF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticeSiteWeb", "Practice_Web\PracticeSiteWeb.csproj", "{B459144B-59D1-45FE-A1ED-86C928147370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticeConsole", "PracticeConsole\PracticeConsole.csproj", "{EDD0B7DF-BE8B-41DF-9282-BC02723D227E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{B459144B-59D1-45FE-A1ED-86C928147370}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B459144B-59D1-45FE-A1ED-86C928147370}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B459144B-59D1-45FE-A1ED-86C928147370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD0B7DF-BE8B-41DF-9282-BC02723D227E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD0B7DF-BE8B-41DF-9282-BC02723D227E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD0B7DF-BE8B-41DF-9282-BC02723D227E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD0B7DF-BE8B-41DF-9282-BC02723D227E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
