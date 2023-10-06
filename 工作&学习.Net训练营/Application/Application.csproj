@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.QrCode" Version="0.6.0" />
+  </ItemGroup>
+
 </Project>
